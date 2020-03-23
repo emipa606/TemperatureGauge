@@ -106,7 +106,7 @@ namespace TempGauge
             else
             {
                 tempInfoAdd = Translator.Translate("CurrentTempIs");
-                var currentTemp = this.Rotation.FacingCell.GetRoom(this.Map).Temperature;
+                var currentTemp = this.GetRoom(RegionType.Set_Passable).Temperature;
                 var niceTemp = (float)Math.Round(currentTemp * 10f) / 10f;
                 tempInfoAdd += niceTemp;
             }
