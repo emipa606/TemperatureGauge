@@ -39,6 +39,28 @@ namespace TempGauge
             }
         }
 
+        private IntVec3 getRoomCell()
+        {
+            var rotation = this.Rotation.AsInt;
+            IntVec3 returnCell = this.Position;
+            switch (rotation)
+            {
+                case 0:                             //North
+                    returnCell = this.Position + new IntVec3(0, 0, 1);
+                    break;
+                case 1:                             //East
+                    returnCell = this.Position + new IntVec3(1, 0, 0);
+                    break;
+                case 2:                             //South
+                    returnCell = this.Position + new IntVec3(0, 0, -1);
+                    break;
+                case 3:                             //West
+                    returnCell = this.Position + new IntVec3(-1, 0, 0);
+                    break;
+            }
+            return returnCell;
+        }
+
         // Token: 0x17000002 RID: 2
         // (get) Token: 0x06000007 RID: 7 RVA: 0x0000231C File Offset: 0x0000051C
         public bool shouldSendAlert
@@ -48,7 +70,7 @@ namespace TempGauge
                 var alertStatus = false;
                 try
                 {
-                    var temperature = this.Rotation.FacingCell.GetRoom(this.Map).Temperature;
+                    var temperature = this.getRoomCell().GetRoom(this.Map).Temperature;
                     var targetTemperature = this.CompTempControl.targetTemperature;
                     if (Prefs.DevMode) Log.Message($"temp: {temperature}, target {targetTemperature}");
                     alertStatus = this.onHighTemp ? (temperature > targetTemperature) : (temperature < targetTemperature);
@@ -163,8 +185,8 @@ namespace TempGauge
 			} else
             {
                 tempInfoAdd = Translator.Translate("CurrentTempIs");
-                var currentTemp = this.Rotation.FacingCell.GetRoom(this.Map).Temperature;
-                var niceTemp = (float)Math.Round(currentTemp * 10f) / 10f;
+                var temperature = this.getRoomCell().GetRoom(this.Map).Temperature;
+                var niceTemp = (float)Math.Round(temperature * 10f) / 10f;
                 tempInfoAdd += niceTemp;
             }
 			bool flag2 = this.alertState == AlertState.Off;
@@ -192,6 +214,7 @@ namespace TempGauge
 			return stringBuilder.ToString();
 		}
 
+        
 		// Token: 0x0600000D RID: 13 RVA: 0x000025A0 File Offset: 0x000007A0
 		public override IEnumerable<Gizmo> GetGizmos()
 		{
@@ -214,7 +237,8 @@ namespace TempGauge
 					}
 				}
 			};
-			foreach (Gizmo g in base.GetGizmos())
+
+            foreach (Gizmo g in base.GetGizmos())
 			{
 				yield return g;
 			}

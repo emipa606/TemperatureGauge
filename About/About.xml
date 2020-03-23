@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>Temperature Gauge (Continued)</name>
 	<packageId>Mlie.TemperatureGauge</packageId>
@@ -12,6 +12,8 @@
 	<loadAfter />
 	<description>Update of Aeryl mod for RimWorld 1.1
 https://steamcommunity.com/sharedfiles/filedetails/?id=843504745
+
+[img]https://raw.githubusercontent.com/emipa606/RimWorld-Wrapper/master/Notice.png[/img]
 
 Support-chat:
 https://discord.gg/SuhwVpM
