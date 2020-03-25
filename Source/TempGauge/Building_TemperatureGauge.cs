@@ -108,7 +108,7 @@ namespace TempGauge
                 tempInfoAdd = Translator.Translate("CurrentTempIs");
                 var currentTemp = this.GetRoom(RegionType.Set_Passable).Temperature;
                 var niceTemp = (float)Math.Round(currentTemp * 10f) / 10f;
-                tempInfoAdd += niceTemp;
+                tempInfoAdd += niceTemp.ToStringTemperature("F0");
             }
             bool flag2 = this.alertState == AlertState.Off;
 			if (flag2)
