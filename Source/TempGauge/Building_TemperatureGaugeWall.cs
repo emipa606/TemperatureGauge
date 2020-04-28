@@ -72,12 +72,13 @@ namespace TempGauge
                 {
                     var temperature = this.getRoomCell().GetRoom(this.Map).Temperature;
                     var targetTemperature = this.CompTempControl.targetTemperature;
-                    if (Prefs.DevMode) Log.Message($"temp: {temperature}, target {targetTemperature}");
+                    //if (Prefs.DevMode) Log.Message($"Temperature Guage: temp {temperature}, target {targetTemperature}");
                     alertStatus = this.onHighTemp ? (temperature > targetTemperature) : (temperature < targetTemperature);
-                    if (Prefs.DevMode) Log.Message($"alertstatus: {alertStatus}");
-                } catch
+                    //if (Prefs.DevMode) Log.Message($"Temperature Guage: alertstatus {alertStatus}");
+                }
+                catch
                 {
-                    if (Prefs.DevMode) Log.Message($"failed to raise alert");
+                    if (Prefs.DevMode) Log.Message($"Temperature Guage: failed to raise alert");
                 }
                 return alertStatus;
             }
@@ -123,7 +124,7 @@ namespace TempGauge
             var currentRotation = this.Rotation.AsInt;
             
             var room = (this.Position + this.Rotation.FacingCell).GetRoom(this.Map);
-            //Log.Message(room.Temperature.ToString());
+            //Log.Message($"Temperature Guage: temp {room.Temperature.ToString()});
 
             float temperature = room.Temperature;
 			GenDraw.FillableBarRequest r = default(GenDraw.FillableBarRequest);

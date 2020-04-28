@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Temperature Gauge (Continued)</name>
-	<packageId>Mlie.TemperatureGauge</packageId>
-	<author>Mlie</author>
-	<url>https://github.com/emipa606/TemperatureGauge</url>
-	<supportedVersions>
-		<li>1.0</li>
-		<li>1.1</li>
-	</supportedVersions>
-	<modDependencies />
-	<loadAfter />
-	<description>Update of Aeryl mod for RimWorld 1.1
+  <name>Temperature Gauge (Continued)</name>
+  <packageId>Mlie.TemperatureGauge</packageId>
+  <author>Mlie</author>
+  <url>https://github.com/emipa606/TemperatureGauge</url>
+  <supportedVersions>
+    <li>1.0</li>
+    <li>1.1</li>
+  </supportedVersions>
+  <modDependencies />
+  <loadAfter />
+  <description>Update of Aeryl mod for RimWorld 1.1
 https://steamcommunity.com/sharedfiles/filedetails/?id=843504745
 
 [img]https://raw.githubusercontent.com/emipa606/RimWorld-Wrapper/master/Notice.png[/img]
+
+[img]https://i.imgur.com/GYswkZ7.png[/img]
 
 Support-chat:
 https://discord.gg/SuhwVpM

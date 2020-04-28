@@ -1,34 +1,26 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<TempGaugeAlert>Temperature out of range</TempGaugeAlert>
-	<TempGaugeAlertDesc>One or more thermometers are reporting a temperature that exceeds the specified alert threshold.</TempGaugeAlertDesc>
-	
-	<TempGaugeAlertHot>Temperature too hot</TempGaugeAlertHot>
-	<TempGaugeAlertHotDesc>The temperature near one of your thermometers has exceeded the threshold of {0}.</TempGaugeAlertHotDesc>
-	
-	<TempGaugeAlertCold>Temperature too cold</TempGaugeAlertCold>
-	<TempGaugeAlertColdDesc>The temperature near one of your thermometers has dropped below the threshold of {0}.</TempGaugeAlertColdDesc>
-	
-	<OnHighTemp>On high temp</OnHighTemp>
-	<OnLowTemp>On low temp</OnLowTemp>
-	<TempGizmoDesc>Determines whether the device should be active when the temperature is above or below the threshold.</TempGizmoDesc>
-	
-	<AlertOffLabel>No alert</AlertOffLabel>
-	<AlertNormalLabel>Normal alert</AlertNormalLabel>
-	<AlertCriticalLabel>Critical alert</AlertCriticalLabel>
-	<AlertGizmoDesc>Determines which kind of alert the device should send, if any.</AlertGizmoDesc>
-	
-	<AlertOffDesc>Alerts are currently disabled.</AlertOffDesc>
-	<AlertOnHighTemperatureDesc>Will send an alert when temperature is above {0}.</AlertOnHighTemperatureDesc>
-	<AlertOnLowTemperatureDesc>Will send an alert when temperature is below {0}.</AlertOnLowTemperatureDesc>
-	
-	<SwitchOffDesc>Switch is flicked off and will never transmit power.</SwitchOffDesc>
-	<SwitchOnHighTemperatureDesc>Transmits power when temperature is above {0}.</SwitchOnHighTemperatureDesc>
-	<SwitchOnLowTemperatureDesc>Transmits power when temperature is below {0}.</SwitchOnLowTemperatureDesc>
-	
-	<CurrentTempIs>Current temperature is </CurrentTempIs>
-	<MessagePlacementOnSupport>Must be placed on a wall or rock.</MessagePlacementOnSupport>
-	<MessagePlacementTowardsWalkable>Must be facing a walkable tile.</MessagePlacementTowardsWalkable>
-	
-	<SwitchGizmoDesc>Whether the switch transmits power when a specified temperature threshold is exceeded.</SwitchGizmoDesc>
+  <TempGaugeAlert>Temperature out of range</TempGaugeAlert>
+  <TempGaugeAlertDesc>One or more thermometers are reporting a temperature that exceeds the specified alert threshold.</TempGaugeAlertDesc>
+  <TempGaugeAlertHot>Temperature too hot</TempGaugeAlertHot>
+  <TempGaugeAlertHotDesc>The temperature near one of your thermometers has exceeded the threshold of {0}.</TempGaugeAlertHotDesc>
+  <TempGaugeAlertCold>Temperature too cold</TempGaugeAlertCold>
+  <TempGaugeAlertColdDesc>The temperature near one of your thermometers has dropped below the threshold of {0}.</TempGaugeAlertColdDesc>
+  <OnHighTemp>On high temp</OnHighTemp>
+  <OnLowTemp>On low temp</OnLowTemp>
+  <TempGizmoDesc>Determines whether the device should be active when the temperature is above or below the threshold.</TempGizmoDesc>
+  <AlertOffLabel>No alert</AlertOffLabel>
+  <AlertNormalLabel>Normal alert</AlertNormalLabel>
+  <AlertCriticalLabel>Critical alert</AlertCriticalLabel>
+  <AlertGizmoDesc>Determines which kind of alert the device should send, if any.</AlertGizmoDesc>
+  <AlertOffDesc>Alerts are currently disabled.</AlertOffDesc>
+  <AlertOnHighTemperatureDesc>Will send an alert when temperature is above {0}.</AlertOnHighTemperatureDesc>
+  <AlertOnLowTemperatureDesc>Will send an alert when temperature is below {0}.</AlertOnLowTemperatureDesc>
+  <SwitchOffDesc>Switch is flicked off and will never transmit power.</SwitchOffDesc>
+  <SwitchOnHighTemperatureDesc>Transmits power when temperature is above {0}.</SwitchOnHighTemperatureDesc>
+  <SwitchOnLowTemperatureDesc>Transmits power when temperature is below {0}.</SwitchOnLowTemperatureDesc>
+  <CurrentTempIs>Current temperature is </CurrentTempIs>
+  <MessagePlacementOnSupport>Must be placed on a wall or rock.</MessagePlacementOnSupport>
+  <MessagePlacementTowardsWalkable>Must be facing a walkable tile.</MessagePlacementTowardsWalkable>
+  <SwitchGizmoDesc>Whether the switch transmits power when a specified temperature threshold is exceeded.</SwitchGizmoDesc>
 </LanguageData>

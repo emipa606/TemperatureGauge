@@ -1,30 +1,23 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<TempGaugeAlert>Temperatur ausserhalb des Bereichs</TempGaugeAlert>
-	<TempGaugeAlertDesc>Eins oder mehrere Thermometer berichten von einer Temperatur, die den Alarmbereich überschreiten!</TempGaugeAlertDesc>
-	
-	<TempGaugeAlertHot>Temperatur zu hoch</TempGaugeAlertHot>
-	<TempGaugeAlertHotDesc>Die Temperatur in der Umgebung eines Thermometers überschritt die {0} Grenze.</TempGaugeAlertHotDesc>
-	
-	<TempGaugeAlertCold>Temperatur zu niedrig</TempGaugeAlertCold>
-	<TempGaugeAlertColdDesc>Die Temperatur in der Umgebung eines Thermometers fiel unter die {0} Grenze.</TempGaugeAlertColdDesc>
-	
-	<OnHighTemp>Bei hoher Temperatur</OnHighTemp>
-	<OnLowTemp>Bei niedriger Temperatur</OnLowTemp>
-	<TempGizmoDesc>Bestimmt, ob das Gerät aktiviert sein soll, wenn die Temperatur über oder unter der Grenze liegt.</TempGizmoDesc>
-	
-	<AlertOffLabel>Kein Alarm</AlertOffLabel>
-	<AlertNormalLabel>Normaler Alarm</AlertNormalLabel>
-	<AlertCriticalLabel>Kritischer Alarm</AlertCriticalLabel>
-	<AlertGizmoDesc>Das Thermometer sendet einen Alarm, wenn ein bestimmter Schwellenwert überschritten wird.</AlertGizmoDesc>
-	
-	<AlertOffDesc>Alarme wurden ausgeschaltet.</AlertOffDesc>
-	<AlertOnHighTemperatureDesc>Alamiert dich, wenn Temperatur über {0}.</AlertOnHighTemperatureDesc>
-	<AlertOnLowTemperatureDesc>Alamiert dich, wenn Temperatur unter {0}.</AlertOnLowTemperatureDesc>
-	
-	<SwitchOffDesc>leitet immer Energie.</SwitchOffDesc>
-	<SwitchOnHighTemperatureDesc>Leitet Energie, wenn Temperatur über {0}.</SwitchOnHighTemperatureDesc>
-	<SwitchOnLowTemperatureDesc>Leitet Energie, wenn Temperatur unter {0}.</SwitchOnLowTemperatureDesc>
-	
-	<SwitchGizmoDesc>Der Schalter leitet Energie, wenn ein bestimmter Schwellenwert überschritten wird.</SwitchGizmoDesc>
+  <TempGaugeAlert>Temperatur ausserhalb des Bereichs</TempGaugeAlert>
+  <TempGaugeAlertDesc>Eins oder mehrere Thermometer berichten von einer Temperatur, die den Alarmbereich Ã¼berschreiten!</TempGaugeAlertDesc>
+  <TempGaugeAlertHot>Temperatur zu hoch</TempGaugeAlertHot>
+  <TempGaugeAlertHotDesc>Die Temperatur in der Umgebung eines Thermometers Ã¼berschritt die {0} Grenze.</TempGaugeAlertHotDesc>
+  <TempGaugeAlertCold>Temperatur zu niedrig</TempGaugeAlertCold>
+  <TempGaugeAlertColdDesc>Die Temperatur in der Umgebung eines Thermometers fiel unter die {0} Grenze.</TempGaugeAlertColdDesc>
+  <OnHighTemp>Bei hoher Temperatur</OnHighTemp>
+  <OnLowTemp>Bei niedriger Temperatur</OnLowTemp>
+  <TempGizmoDesc>Bestimmt, ob das GerÃ¤t aktiviert sein soll, wenn die Temperatur Ã¼ber oder unter der Grenze liegt.</TempGizmoDesc>
+  <AlertOffLabel>Kein Alarm</AlertOffLabel>
+  <AlertNormalLabel>Normaler Alarm</AlertNormalLabel>
+  <AlertCriticalLabel>Kritischer Alarm</AlertCriticalLabel>
+  <AlertGizmoDesc>Das Thermometer sendet einen Alarm, wenn ein bestimmter Schwellenwert Ã¼berschritten wird.</AlertGizmoDesc>
+  <AlertOffDesc>Alarme wurden ausgeschaltet.</AlertOffDesc>
+  <AlertOnHighTemperatureDesc>Alamiert dich, wenn Temperatur Ã¼ber {0}.</AlertOnHighTemperatureDesc>
+  <AlertOnLowTemperatureDesc>Alamiert dich, wenn Temperatur unter {0}.</AlertOnLowTemperatureDesc>
+  <SwitchOffDesc>leitet immer Energie.</SwitchOffDesc>
+  <SwitchOnHighTemperatureDesc>Leitet Energie, wenn Temperatur Ã¼ber {0}.</SwitchOnHighTemperatureDesc>
+  <SwitchOnLowTemperatureDesc>Leitet Energie, wenn Temperatur unter {0}.</SwitchOnLowTemperatureDesc>
+  <SwitchGizmoDesc>Der Schalter leitet Energie, wenn ein bestimmter Schwellenwert Ã¼berschritten wird.</SwitchGizmoDesc>
 </LanguageData>
