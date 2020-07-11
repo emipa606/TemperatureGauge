@@ -45,6 +45,12 @@ namespace TempGauge
 			}
 		}
 
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			Scribe_Values.Look<bool>(ref this.switchOnOld, "switchOnOld", true, false);
+		}
+
 		// Token: 0x17000005 RID: 5
 		// (get) Token: 0x06000015 RID: 21 RVA: 0x00002778 File Offset: 0x00000978
 		public override bool TransmitsPowerNow
@@ -105,10 +111,17 @@ namespace TempGauge
 		{
 			StringBuilder stringBuilder = new StringBuilder();
 			bool flag = base.GetType() == typeof(MinifiedThing);
+			var tempInfoAdd = string.Empty;
 			if (flag)
 			{
 				stringBuilder.Append(Translator.Translate("NotInstalled"));
 				stringBuilder.AppendLine();
+			} else
+            {
+				tempInfoAdd = Translator.Translate("CurrentTempIs");
+				var currentTemp = this.GetRoom(RegionType.Set_Passable).Temperature;
+				var niceTemp = (float)Math.Round(currentTemp * 10f) / 10f;
+				tempInfoAdd += niceTemp.ToStringTemperature("F0");
 			}
 			bool flag2 = base.PowerComp.PowerNet == null;
 			if (flag2)
@@ -136,6 +149,11 @@ namespace TempGauge
 			{
 				stringBuilder.AppendLine();
 				stringBuilder.Append(Translator.Translate("SwitchOffDesc"));
+			}
+			if (!string.IsNullOrEmpty(tempInfoAdd))
+			{
+				stringBuilder.AppendLine();
+				stringBuilder.Append(tempInfoAdd);
 			}
 			return stringBuilder.ToString();
 		}
