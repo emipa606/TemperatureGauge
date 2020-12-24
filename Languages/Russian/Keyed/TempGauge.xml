@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- EN <TempGaugeAlert>Temperature out of range</TempGaugeAlert> -->
+  <TempGaugeAlert>Сработал сигнал термометра</TempGaugeAlert>
+  <!-- EN <TempGaugeAlertDesc>One or more thermometers are reporting a temperature that exceeds the specified alert threshold.</TempGaugeAlertDesc> -->
+  <TempGaugeAlertDesc>Один из термометров о выходен за пределы заданной шкалы.</TempGaugeAlertDesc>
+  <!-- EN <TempGaugeAlertHot>Temperature too hot</TempGaugeAlertHot> -->
+  <TempGaugeAlertHot>Слишком жарко</TempGaugeAlertHot>
+  <!-- EN <TempGaugeAlertHotDesc>The temperature near one of your thermometers has exceeded the threshold of {0}.</TempGaugeAlertHotDesc> -->
+  <TempGaugeAlertHotDesc>Около одного из термометров воздух прогрелся выше {0}.</TempGaugeAlertHotDesc>
+  <!-- EN <TempGaugeAlertCold>Temperature too cold</TempGaugeAlertCold> -->
+  <TempGaugeAlertCold>Слишком холодно</TempGaugeAlertCold>
+  <!-- EN <TempGaugeAlertColdDesc>The temperature near one of your thermometers has dropped below the threshold of {0}.</TempGaugeAlertColdDesc> -->
+  <TempGaugeAlertColdDesc>Около одного из термометров воздух охладился ниже {0}.</TempGaugeAlertColdDesc>
+  <!-- EN <OnHighTemp>On high temp</OnHighTemp> -->
+  <OnHighTemp>При нагреве выше</OnHighTemp>
+  <!-- EN <OnLowTemp>On low temp</OnLowTemp> -->
+  <OnLowTemp>При охлаждении ниже</OnLowTemp>
+  <!-- EN <TempGizmoDesc>Determines whether the device should be active when the temperature is above or below the threshold.</TempGizmoDesc> -->
+  <TempGizmoDesc>Когда должен срабатывать термометр.</TempGizmoDesc>
+  <!-- EN <AlertOffLabel>No alert</AlertOffLabel> -->
+  <AlertOffLabel>Не сигнализировать</AlertOffLabel>
+  <!-- EN <AlertNormalLabel>Normal alert</AlertNormalLabel> -->
+  <AlertNormalLabel>Простая сигнализация</AlertNormalLabel>
+  <!-- EN <AlertCriticalLabel>Critical alert</AlertCriticalLabel> -->
+  <AlertCriticalLabel>Аварийная сигнализация</AlertCriticalLabel>
+  <!-- EN <AlertGizmoDesc>Determines which kind of alert the device should send, if any.</AlertGizmoDesc> -->
+  <AlertGizmoDesc>Как должен срабатывать термометр.</AlertGizmoDesc>
+  <!-- EN <AlertOffDesc>Alerts are currently disabled.</AlertOffDesc> -->
+  <AlertOffDesc>Сигналы термометра откючены.</AlertOffDesc>
+  <!-- EN <AlertOnHighTemperatureDesc>Will send an alert when temperature is above {0}.</AlertOnHighTemperatureDesc> -->
+  <AlertOnHighTemperatureDesc>Будет сигнализировать при нагреве выше {0}.</AlertOnHighTemperatureDesc>
+  <!-- EN <AlertOnLowTemperatureDesc>Will send an alert when temperature is below {0}.</AlertOnLowTemperatureDesc> -->
+  <AlertOnLowTemperatureDesc>Будет сигнализировать при охлаждении ниже {0}.</AlertOnLowTemperatureDesc>
+  <!-- EN <SwitchOffDesc>Switch is flicked off and will never transmit power.</SwitchOffDesc> -->
+  <SwitchOffDesc>Термореле выключено и не будет работать.</SwitchOffDesc>
+  <!-- EN <SwitchOnHighTemperatureDesc>Transmits power when temperature is above {0}.</SwitchOnHighTemperatureDesc> -->
+  <SwitchOnHighTemperatureDesc>Проводит электричество при температуре выше {0}.</SwitchOnHighTemperatureDesc>
+  <!-- EN <SwitchOnLowTemperatureDesc>Transmits power when temperature is below {0}.</SwitchOnLowTemperatureDesc> -->
+  <SwitchOnLowTemperatureDesc>Проводит электричество при температуре ниже {0}.</SwitchOnLowTemperatureDesc>
+  <!-- EN <CurrentTempIs>Current temperature is </CurrentTempIs> -->
+  <CurrentTempIs>Температура </CurrentTempIs>
+  <!-- EN <MessagePlacementOnSupport>Must be placed on a wall or rock.</MessagePlacementOnSupport> -->
+  <MessagePlacementOnSupport>Должен быть установлен на стене.</MessagePlacementOnSupport>
+  <!-- EN <MessagePlacementTowardsWalkable>Must be facing a walkable tile.</MessagePlacementTowardsWalkable> -->
+  <MessagePlacementTowardsWalkable>Должен быть установлен на клетке пола.</MessagePlacementTowardsWalkable>
+  <!-- EN <SwitchGizmoDesc>Whether the switch transmits power when a specified temperature threshold is exceeded.</SwitchGizmoDesc> -->
+  <SwitchGizmoDesc>Реле проводит электричество когда температура выходит за заданное значение.</SwitchGizmoDesc>
+</LanguageData>

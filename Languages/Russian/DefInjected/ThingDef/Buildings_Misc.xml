@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- EN <TemperatureGauge.label>thermometer</TemperatureGauge.label> -->
+  <TemperatureGauge.label>термометр</TemperatureGauge.label>
+  <!-- EN <TemperatureGauge.description>Displays the current ambient temperature and can be configured to provide temperature based alerts. Does not require power.</TemperatureGauge.description> -->
+  <TemperatureGauge.description>Показывает температуру окружающего воздуха и может сигнализировать при должной настройке. Не требует подключения к электросети.</TemperatureGauge.description>
+  <!-- EN <TemperatureGaugeWall.label>wall-thermometer</TemperatureGaugeWall.label> -->
+  <TemperatureGaugeWall.label>настенный термометр</TemperatureGaugeWall.label>
+  <!-- EN <TemperatureGaugeWall.description>Displays the current ambient temperature and can be configured to provide temperature based alerts. Does not require power.</TemperatureGaugeWall.description> -->
+  <TemperatureGaugeWall.description>Показывает температуру окружающего воздуха и может сигнализировать при должной настройке. Не требует подключения к электросети.</TemperatureGaugeWall.description>
+  <!-- EN <TemperatureSwitch.label>temperature switch</TemperatureSwitch.label> -->
+  <TemperatureSwitch.label>термореле</TemperatureSwitch.label>
+  <!-- EN <TemperatureSwitch.description>A configurable switch that transfers power based on the current temperature.</TemperatureSwitch.description> -->
+  <TemperatureSwitch.description>Настраиваемое термореле, которое проводит электричество при нужной температуре воздуха.</TemperatureSwitch.description>
+  <!-- EN <TemperatureSwitch_Blueprint.label>temperature switch (blueprint)</TemperatureSwitch_Blueprint.label> -->
+  <TemperatureSwitch_Blueprint.label>термореле (проект)</TemperatureSwitch_Blueprint.label>
+  <!-- EN <TemperatureSwitch_Blueprint_Install.label>temperature switch (blueprint)</TemperatureSwitch_Blueprint_Install.label> -->
+  <TemperatureSwitch_Blueprint_Install.label>термореле (проект)</TemperatureSwitch_Blueprint_Install.label>
+  <!-- EN <TemperatureSwitch_Frame.label>temperature switch (building)</TemperatureSwitch_Frame.label> -->
+  <TemperatureSwitch_Frame.label>термореле (в процессе сборки)</TemperatureSwitch_Frame.label>
+  <!-- EN <TemperatureSwitch_Frame.description>A configurable switch that transfers power based on the current temperature.</TemperatureSwitch_Frame.description> -->
+  <TemperatureSwitch_Frame.description>Настраиваемое термореле, которое проводит электричество при нужной температуре воздуха.</TemperatureSwitch_Frame.description>
+</LanguageData>

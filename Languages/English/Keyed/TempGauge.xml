@@ -23,5 +23,4 @@
   <MessagePlacementOnSupport>Must be placed on a wall or rock.</MessagePlacementOnSupport>
   <MessagePlacementTowardsWalkable>Must be facing a walkable tile.</MessagePlacementTowardsWalkable>
   <SwitchGizmoDesc>Whether the switch transmits power when a specified temperature threshold is exceeded.</SwitchGizmoDesc>
-
 </LanguageData>
