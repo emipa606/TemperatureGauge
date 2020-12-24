@@ -1,0 +1,8 @@
+information from translation report:
+
+========== Def-injected translations using old, renamed defs (fixed automatically but can break in the next RimWorld version) (4) =========
+
+Def has been renamed: TemperatureSwitch_Blueprint -> Blueprint_TemperatureSwitch, translation TemperatureSwitch_Blueprint.label should be renamed as well.
+Def has been renamed: TemperatureSwitch_Blueprint_Install -> Blueprint_Install_TemperatureSwitch, translation TemperatureSwitch_Blueprint_Install.label should be renamed as well.
+Def has been renamed: TemperatureSwitch_Frame -> Frame_TemperatureSwitch, translation TemperatureSwitch_Frame.label should be renamed as well.
+Def has been renamed: TemperatureSwitch_Frame -> Frame_TemperatureSwitch, translation TemperatureSwitch_Frame.description should be renamed as well.
