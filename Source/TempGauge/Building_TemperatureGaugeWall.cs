@@ -12,12 +12,27 @@ namespace TempGauge
     [StaticConstructorOnStartup]
     public class Building_TemperatureGaugeWall : Building_Thermometer
     {
+        // Token: 0x04000009 RID: 9
+        private static readonly Material GaugeFillHotMat =
+            SolidColorMaterials.SimpleSolidColorMaterial(new Color(1f, 0.5f, 0.2f));
+
+        // Token: 0x0400000A RID: 10
+        private static readonly Material GaugeFillColdMat =
+            SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.2f, 0.4f, 1f));
+
+        // Token: 0x0400000B RID: 11
+        private static readonly Material GaugeUnfilledMat =
+            SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.1f, 0.1f, 0.1f));
+
+        // Token: 0x0400000C RID: 12
+        public AlertState alertState = AlertState.Normal;
+
         public override string Label
         {
             get
             {
                 var returnValue = base.Label;
-                var currentRotation = this.Rotation.AsInt;
+                var currentRotation = Rotation.AsInt;
                 switch (currentRotation)
                 {
                     case 0:
@@ -32,33 +47,10 @@ namespace TempGauge
                     case 3:
                         returnValue += " facing West";
                         break;
-                    default:
-                        break;
                 }
+
                 return returnValue;
             }
-        }
-
-        private IntVec3 getRoomCell()
-        {
-            var rotation = this.Rotation.AsInt;
-            IntVec3 returnCell = this.Position;
-            switch (rotation)
-            {
-                case 0:                             //North
-                    returnCell = this.Position + new IntVec3(0, 0, 1);
-                    break;
-                case 1:                             //East
-                    returnCell = this.Position + new IntVec3(1, 0, 0);
-                    break;
-                case 2:                             //South
-                    returnCell = this.Position + new IntVec3(0, 0, -1);
-                    break;
-                case 3:                             //West
-                    returnCell = this.Position + new IntVec3(-1, 0, 0);
-                    break;
-            }
-            return returnCell;
         }
 
         // Token: 0x17000002 RID: 2
@@ -70,19 +62,23 @@ namespace TempGauge
                 var alertStatus = false;
                 try
                 {
-                    if (this.alertState > AlertState.Off)
+                    if (alertState > AlertState.Off)
                     {
-                        var temperature = this.getRoomCell().GetRoom(this.Map).Temperature;
-                        var targetTemperature = this.CompTempControl.targetTemperature;
+                        var temperature = getRoomCell().GetRoom(Map).Temperature;
+                        var targetTemperature = CompTempControl.targetTemperature;
                         //if (Prefs.DevMode) Log.Message($"Temperature Guage: temp {temperature}, target {targetTemperature}");
-                        alertStatus = this.onHighTemp ? (temperature > targetTemperature) : (temperature < targetTemperature);
+                        alertStatus = onHighTemp ? temperature > targetTemperature : temperature < targetTemperature;
                         //if (Prefs.DevMode) Log.Message($"Temperature Guage: alertstatus {alertStatus}");
                     }
                 }
                 catch
                 {
-                    if (Prefs.DevMode) Log.Message($"Temperature Guage: failed to raise alert");
+                    if (Prefs.DevMode)
+                    {
+                        Log.Message("Temperature Guage: failed to raise alert");
+                    }
                 }
+
                 return alertStatus;
             }
         }
@@ -94,75 +90,100 @@ namespace TempGauge
             get
             {
                 string result;
-                switch (this.alertState)
+                switch (alertState)
                 {
                     case AlertState.Off:
-                        result = Translator.Translate("AlertOffLabel");
+                        result = "AlertOffLabel".Translate();
                         break;
                     case AlertState.Normal:
-                        result = Translator.Translate("AlertNormalLabel");
+                        result = "AlertNormalLabel".Translate();
                         break;
                     case AlertState.Critical:
-                        result = Translator.Translate("AlertCriticalLabel");
+                        result = "AlertCriticalLabel".Translate();
                         break;
                     default:
-                        result = Translator.Translate("AlertOffLabel");
+                        result = "AlertOffLabel".Translate();
                         break;
                 }
+
                 return result;
             }
+        }
+
+        private IntVec3 getRoomCell()
+        {
+            var rotation = Rotation.AsInt;
+            var returnCell = Position;
+            switch (rotation)
+            {
+                case 0: //North
+                    returnCell = Position + new IntVec3(0, 0, 1);
+                    break;
+                case 1: //East
+                    returnCell = Position + new IntVec3(1, 0, 0);
+                    break;
+                case 2: //South
+                    returnCell = Position + new IntVec3(0, 0, -1);
+                    break;
+                case 3: //West
+                    returnCell = Position + new IntVec3(-1, 0, 0);
+                    break;
+            }
+
+            return returnCell;
         }
 
         // Token: 0x06000009 RID: 9 RVA: 0x000023A2 File Offset: 0x000005A2
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<AlertState>(ref this.alertState, "alertState", AlertState.Normal, false);
+            Scribe_Values.Look(ref alertState, "alertState", AlertState.Normal);
         }
 
         // Token: 0x0600000A RID: 10 RVA: 0x000023C0 File Offset: 0x000005C0
         public override void Draw()
         {
             base.Draw();
-            var currentRotation = this.Rotation.AsInt;
+            var currentRotation = Rotation.AsInt;
 
-            var room = (this.Position + this.Rotation.FacingCell).GetRoom(this.Map);
+            var room = (Position + Rotation.FacingCell).GetRoom(Map);
             //Log.Message($"Temperature Guage: temp {room.Temperature.ToString()});
 
-            float temperature = room.Temperature;
-            GenDraw.FillableBarRequest r = default(GenDraw.FillableBarRequest);
-            r.center = this.DrawPos;
+            var temperature = room.Temperature;
+            var r = default(GenDraw.FillableBarRequest);
+            r.center = DrawPos;
 
             var offsetFromCenter = 0.4f;
             if (currentRotation == 0 || currentRotation == 2)
             {
-                if (currentRotation == 0)  // North
+                if (currentRotation == 0) // North
+                {
                     r.center.z = r.center.z + offsetFromCenter;
-                else                      // South
+                }
+                else // South
+                {
                     r.center.z = r.center.z - offsetFromCenter;
+                }
             }
             else
             {
                 if (currentRotation == 1) // East
+                {
                     r.center.x = r.center.x + offsetFromCenter;
-                else                      // West
+                }
+                else // West
+                {
                     r.center.x = r.center.x - offsetFromCenter;
-
+                }
             }
-            r.rotation = base.Rotation;
+
+            r.rotation = Rotation;
             r.size = new Vector2(0.45f, 0.1f);
             r.margin = 0.01f;
             r.fillPercent = Mathf.Clamp(Mathf.Abs(temperature), 1f, 50f) / 50f;
-            r.unfilledMat = Building_TemperatureGaugeWall.GaugeUnfilledMat;
-            bool flag = temperature > 0f;
-            if (flag)
-            {
-                r.filledMat = Building_TemperatureGaugeWall.GaugeFillHotMat;
-            }
-            else
-            {
-                r.filledMat = Building_TemperatureGaugeWall.GaugeFillColdMat;
-            }
+            r.unfilledMat = GaugeUnfilledMat;
+            r.filledMat = temperature > 0f ? GaugeFillHotMat : GaugeFillColdMat;
+
             GenDraw.DrawFillableBar(r);
         }
 
@@ -170,53 +191,49 @@ namespace TempGauge
         public override void TickRare()
         {
             base.TickRare();
-            bool shouldSendAlert = this.shouldSendAlert;
             if (shouldSendAlert)
             {
-                MoteMaker.ThrowMetaIcon(IntVec3Utility.ToIntVec3(GenThing.TrueCenter(this)), base.Map, ThingDefOf.Mote_IncapIcon);
+                FleckMaker.ThrowMetaIcon(this.TrueCenter().ToIntVec3(), Map, FleckDefOf.IncapIcon);
             }
         }
 
         // Token: 0x0600000C RID: 12 RVA: 0x000024E4 File Offset: 0x000006E4
         public override string GetInspectString()
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            bool flag = base.GetType() == typeof(MinifiedThing);
+            var stringBuilder = new StringBuilder();
             var tempInfoAdd = string.Empty;
-            if (flag)
+            if (GetType() == typeof(MinifiedThing))
             {
-                stringBuilder.Append(Translator.Translate("NotInstalled"));
+                stringBuilder.Append("NotInstalled".Translate());
                 stringBuilder.AppendLine();
             }
             else
             {
-                tempInfoAdd = Translator.Translate("CurrentTempIs");
-                var temperature = this.getRoomCell().GetRoom(this.Map).Temperature;
-                var niceTemp = (float)Math.Round(temperature * 10f) / 10f;
+                tempInfoAdd = "CurrentTempIs".Translate();
+                var temperature = getRoomCell().GetRoom(Map).Temperature;
+                var niceTemp = (float) Math.Round(temperature * 10f) / 10f;
                 tempInfoAdd += niceTemp.ToStringTemperature("F0");
             }
-            bool flag2 = this.alertState == AlertState.Off;
-            if (flag2)
+
+            if (alertState == AlertState.Off)
             {
-                stringBuilder.Append(Translator.Translate("AlertOffDesc"));
+                stringBuilder.Append("AlertOffDesc".Translate());
             }
             else
             {
-                bool onHighTemp = this.onHighTemp;
-                if (onHighTemp)
-                {
-                    stringBuilder.Append(TranslatorFormattedStringExtensions.Translate("AlertOnHighTemperatureDesc", base.targetTempString));
-                }
-                else
-                {
-                    stringBuilder.Append(TranslatorFormattedStringExtensions.Translate("AlertOnLowTemperatureDesc", base.targetTempString));
-                }
+                stringBuilder.Append(onHighTemp
+                    ? "AlertOnHighTemperatureDesc".Translate(targetTempString)
+                    : "AlertOnLowTemperatureDesc".Translate(targetTempString));
             }
-            if (!string.IsNullOrEmpty(tempInfoAdd))
+
+            if (string.IsNullOrEmpty(tempInfoAdd))
             {
-                stringBuilder.AppendLine();
-                stringBuilder.Append(tempInfoAdd);
+                return stringBuilder.ToString();
             }
+
+            stringBuilder.AppendLine();
+            stringBuilder.Append(tempInfoAdd);
+
             return stringBuilder.ToString();
         }
 
@@ -226,65 +243,53 @@ namespace TempGauge
         {
             yield return new Command_Action
             {
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/Alert_" + this.alertState.ToString(), true),
-                defaultLabel = this.alertGizmoLabel,
-                defaultDesc = Translator.Translate("AlertGizmoDesc"),
-                action = delegate ()
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/Alert_" + alertState),
+                defaultLabel = alertGizmoLabel,
+                defaultDesc = "AlertGizmoDesc".Translate(),
+                action = delegate
                 {
-                    SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
-                    bool flag = this.alertState >= AlertState.Critical;
-                    if (flag)
+                    SoundDefOf.Tick_High.PlayOneShotOnCamera();
+                    if (alertState >= AlertState.Critical)
                     {
-                        this.alertState = AlertState.Off;
+                        alertState = AlertState.Off;
                     }
                     else
                     {
-                        this.alertState++;
+                        alertState++;
                     }
                 }
             };
 
-            foreach (Gizmo g in base.GetGizmos())
+            foreach (var g in base.GetGizmos())
             {
                 yield return g;
             }
+
             yield return new Command_Action
             {
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/CopySettings", true),
-                defaultLabel = Translator.Translate("CommandCopyZoneSettingsLabel"),
-                defaultDesc = Translator.Translate("CommandCopyZoneSettingsDesc"),
-                action = delegate ()
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/CopySettings"),
+                defaultLabel = "CommandCopyZoneSettingsLabel".Translate(),
+                defaultDesc = "CommandCopyZoneSettingsDesc".Translate(),
+                action = delegate
                 {
-                    SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
-                    GaugeSettings_Clipboard.Copy(this.onHighTemp, this.CompTempControl.targetTemperature, this.alertState);
+                    SoundDefOf.Tick_High.PlayOneShotOnCamera();
+                    GaugeSettings_Clipboard.Copy(onHighTemp, CompTempControl.targetTemperature, alertState);
                 },
                 hotKey = KeyBindingDefOf.Misc4
             };
             yield return new Command_Action
             {
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/PasteSettings", true),
-                defaultLabel = Translator.Translate("CommandPasteZoneSettingsLabel"),
-                defaultDesc = Translator.Translate("CommandPasteZoneSettingsDesc"),
-                action = delegate ()
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/PasteSettings"),
+                defaultLabel = "CommandPasteZoneSettingsLabel".Translate(),
+                defaultDesc = "CommandPasteZoneSettingsDesc".Translate(),
+                action = delegate
                 {
-                    SoundDefOf.Tick_High.PlayOneShotOnCamera(null);
-                    GaugeSettings_Clipboard.PasteInto(out this.onHighTemp, out this.CompTempControl.targetTemperature, out this.alertState);
+                    SoundDefOf.Tick_High.PlayOneShotOnCamera();
+                    GaugeSettings_Clipboard.PasteInto(out onHighTemp, out CompTempControl.targetTemperature,
+                        out alertState);
                 },
                 hotKey = KeyBindingDefOf.Misc5
             };
-            yield break;
         }
-
-        // Token: 0x04000009 RID: 9
-        private static readonly Material GaugeFillHotMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(1f, 0.5f, 0.2f), false);
-
-        // Token: 0x0400000A RID: 10
-        private static readonly Material GaugeFillColdMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.2f, 0.4f, 1f), false);
-
-        // Token: 0x0400000B RID: 11
-        private static readonly Material GaugeUnfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.1f, 0.1f, 0.1f), false);
-
-        // Token: 0x0400000C RID: 12
-        public AlertState alertState = AlertState.Normal;
     }
 }
