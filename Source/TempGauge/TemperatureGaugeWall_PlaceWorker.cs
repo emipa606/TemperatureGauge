@@ -14,10 +14,7 @@ public class TemperatureGaugeWall_PlaceWorker : PlaceWorker
             return "MessagePlacementOnSupport".Translate();
         }
 
-        if (
-            support.def == null ||
-            support.def.graphicData == null
-        )
+        if (support.def?.graphicData == null)
         {
             return "MessagePlacementOnSupport".Translate();
         }
@@ -28,11 +25,6 @@ public class TemperatureGaugeWall_PlaceWorker : PlaceWorker
         }
 
         c = loc + rot.FacingCell;
-        if (!c.Walkable(map))
-        {
-            return "MessagePlacementTowardsWalkable".Translate();
-        }
-
-        return AcceptanceReport.WasAccepted;
+        return !c.Walkable(map) ? "MessagePlacementTowardsWalkable".Translate() : AcceptanceReport.WasAccepted;
     }
 }

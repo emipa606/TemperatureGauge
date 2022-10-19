@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>d799c733-810b-44a9-99b3-3116145c59db</ID>
   <ModName>Temperature Gauge (Continued)</ModName>
-  <Version>1.0.10.0</Version>
+  <Version>1.4.1</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>emipa606</Owner>

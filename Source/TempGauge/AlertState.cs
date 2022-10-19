@@ -1,15 +1,10 @@
-﻿namespace TempGauge
+namespace TempGauge;
+
+public enum AlertState
 {
-    // Token: 0x02000002 RID: 2
-    public enum AlertState
-    {
-        // Token: 0x04000002 RID: 2
-        Off,
+    Off,
 
-        // Token: 0x04000003 RID: 3
-        Normal,
+    Normal,
 
-        // Token: 0x04000004 RID: 4
-        Critical
-    }
+    Critical
 }

@@ -1,6 +1,6 @@
 # TemperatureGauge
 
-![Image](https://i.imgur.com/WAEzk68.png)
+![Image](https://i.imgur.com/buuPQel.png)
 
 Update of Aeryl mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=843504745
@@ -11,19 +11,10 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=843504745
 - Testing this with the Parallel Power-grid mod gave no errors so it should now be compatible
 - Russian translation added, thanks uncleshvya
 
-![Image](https://i.imgur.com/7Gzt3Rg.png)
+![Image](https://i.imgur.com/pufA0kM.png)
 
-
-[table]
-	[tr]
-		[td]https://invite.gg/Mlie]![Image](https://i.imgur.com/zdzzBrc.png)
-[/td]
-		[td]https://github.com/emipa606/TemperatureGauge]![Image](https://i.imgur.com/kTkpTOE.png)
-[/td]
-	[/tr]
-[/table]
 	
-![Image](https://i.imgur.com/NOW7jU1.png)
+![Image](https://i.imgur.com/Z4GOv8H.png)
 
 
 Adds a simple buildable thermometer that displays the current ambient temperature and can be configured to provide temperature based alerts. You can set it to alert you when a room gets too hot or cold. If you have ever had food rot in a freezer or plants die in your greenhouse because you forgot to check the temperature, this mod is for you.
@@ -34,11 +25,11 @@ It should be fine to add this mod to an existing save.
 
 **Updated to 1.0.0** (22 Oct 2018):
 • Updated for version 1.0
-• Now supports Fluffy&apos;s Mod Manager.
+• Now supports Fluffy's Mod Manager.
 • Switches now update less frequently; this should provide a slight increase to performance.
 
 
-![Image](https://i.imgur.com/Rs6T6cr.png)
+![Image](https://i.imgur.com/PwoNOj4.png)
 
 
 
@@ -48,6 +39,7 @@ It should be fine to add this mod to an existing save.
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
+
 
 
 
