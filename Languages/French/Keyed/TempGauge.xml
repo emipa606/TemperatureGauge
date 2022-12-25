@@ -24,4 +24,5 @@
   <MessagePlacementOnSupport>Doit être placé sur un mur ou un rocher.</MessagePlacementOnSupport>
   <MessagePlacementTowardsWalkable>Doit faire face à une tuile praticable.</MessagePlacementTowardsWalkable>
   <SwitchGizmoDesc>Si le commutateur transmet de l'énergie lorsqu'un seuil de température spécifié est dépassé.</SwitchGizmoDesc>
+  <TempGaugeMissingResearch>Les alertes ne peuvent être utilisées qu'après avoir effectué des recherches en électricité.</TempGaugeMissingResearch>
 </LanguageData>

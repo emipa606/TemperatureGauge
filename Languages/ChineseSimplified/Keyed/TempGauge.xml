@@ -24,4 +24,5 @@
   <MessagePlacementOnSupport>必须放置在墙壁或岩石上。</MessagePlacementOnSupport>
   <MessagePlacementTowardsWalkable>必须面向可行走的瓦片。</MessagePlacementTowardsWalkable>
   <SwitchGizmoDesc>当超过指定的温度阈值时，开关是否会传输电源。</SwitchGizmoDesc>
+  <TempGaugeMissingResearch>警报只能在电力研究完成后使用</TempGaugeMissingResearch>
 </LanguageData>

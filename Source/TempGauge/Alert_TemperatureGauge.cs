@@ -59,6 +59,11 @@ public class Alert_TemperatureGauge : Alert
 
     public override AlertReport GetReport()
     {
+        if (!ResearchProjectDef.Named("Electricity").IsFinished)
+        {
+            return false;
+        }
+
         var maps = Find.Maps;
         foreach (var map in maps)
         {

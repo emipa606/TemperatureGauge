@@ -35,19 +35,29 @@ public abstract class Building_Thermometer : Building
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
-        yield return new Command_Action
+        var canUse = ResearchProjectDef.Named("Electricity").IsFinished;
+        if (canUse)
         {
-            icon = ContentFinder<Texture2D>.Get($"UI/Commands/{(onHighTemp ? "TempHigh" : "TempLow")}"),
-            defaultLabel = (onHighTemp ? "OnHighTemp" : "OnLowTemp").Translate(),
-            defaultDesc = "TempGizmoDesc".Translate(),
-            action = delegate
+            yield return new Command_Action
             {
-                SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                onHighTemp = !onHighTemp;
-            }
-        };
+                icon = ContentFinder<Texture2D>.Get($"UI/Commands/{(onHighTemp ? "TempHigh" : "TempLow")}"),
+                defaultLabel = (onHighTemp ? "OnHighTemp" : "OnLowTemp").Translate(),
+                defaultDesc = "TempGizmoDesc".Translate(),
+                action = delegate
+                {
+                    SoundDefOf.Tick_High.PlayOneShotOnCamera();
+                    onHighTemp = !onHighTemp;
+                }
+            };
+        }
+
         foreach (var g in base.GetGizmos())
         {
+            if (!canUse && g is Command_Action action && action.icon.name.StartsWith("Temp"))
+            {
+                continue;
+            }
+
             yield return g;
         }
     }

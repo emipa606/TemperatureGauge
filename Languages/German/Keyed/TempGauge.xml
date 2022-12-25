@@ -24,4 +24,5 @@
   <CurrentTempIs>Die aktuelle Temperatur beträgt</CurrentTempIs>
   <MessagePlacementOnSupport>Muss an einer Wand oder einem Felsen angebracht werden.</MessagePlacementOnSupport>
   <MessagePlacementTowardsWalkable>Muss auf eine begehbare Fliese ausgerichtet sein.</MessagePlacementTowardsWalkable>
+  <TempGaugeMissingResearch>Ausschreibungen können nur nach einer Stromrecherche verwendet werden</TempGaugeMissingResearch>
 </LanguageData>

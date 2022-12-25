@@ -89,7 +89,7 @@ public class Building_TemperatureGauge : Building_Thermometer
         if (GetType() == typeof(MinifiedThing))
         {
             stringBuilder.Append("NotInstalled".Translate());
-            stringBuilder.AppendLine();
+            stringBuilder.AppendLineIfNotEmpty();
         }
         else
         {
@@ -99,15 +99,22 @@ public class Building_TemperatureGauge : Building_Thermometer
             tempInfoAdd += niceTemp.ToStringTemperature("F0");
         }
 
-        if (alertState == AlertState.Off)
+        if (ResearchProjectDef.Named("Electricity").IsFinished)
         {
-            stringBuilder.Append("AlertOffDesc".Translate());
+            if (alertState == AlertState.Off)
+            {
+                stringBuilder.Append("AlertOffDesc".Translate());
+            }
+            else
+            {
+                stringBuilder.Append(onHighTemp
+                    ? "AlertOnHighTemperatureDesc".Translate(targetTempString)
+                    : "AlertOnLowTemperatureDesc".Translate(targetTempString));
+            }
         }
         else
         {
-            stringBuilder.Append(onHighTemp
-                ? "AlertOnHighTemperatureDesc".Translate(targetTempString)
-                : "AlertOnLowTemperatureDesc".Translate(targetTempString));
+            alertState = AlertState.Off;
         }
 
         if (string.IsNullOrEmpty(tempInfoAdd))
@@ -115,32 +122,47 @@ public class Building_TemperatureGauge : Building_Thermometer
             return stringBuilder.ToString();
         }
 
-        stringBuilder.AppendLine();
+        stringBuilder.AppendLineIfNotEmpty();
         stringBuilder.Append(tempInfoAdd);
 
-        return stringBuilder.ToString();
+        return stringBuilder.ToString().TrimEndNewlines();
     }
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
-        yield return new Command_Action
+        if (ResearchProjectDef.Named("Electricity").IsFinished)
         {
-            icon = ContentFinder<Texture2D>.Get($"UI/Commands/Alert_{alertState}"),
-            defaultLabel = alertGizmoLabel,
-            defaultDesc = "AlertGizmoDesc".Translate(),
-            action = delegate
+            yield return new Command_Action
             {
-                SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                if (alertState >= AlertState.Critical)
+                icon = ContentFinder<Texture2D>.Get($"UI/Commands/Alert_{alertState}"),
+                defaultLabel = alertGizmoLabel,
+                defaultDesc = "AlertGizmoDesc".Translate(),
+                action = delegate
                 {
-                    alertState = AlertState.Off;
+                    SoundDefOf.Tick_High.PlayOneShotOnCamera();
+                    if (alertState >= AlertState.Critical)
+                    {
+                        alertState = AlertState.Off;
+                    }
+                    else
+                    {
+                        alertState++;
+                    }
                 }
-                else
-                {
-                    alertState++;
-                }
-            }
-        };
+            };
+        }
+        else
+        {
+            yield return new Command_Action
+            {
+                icon = ContentFinder<Texture2D>.Get($"UI/Commands/Alert_{alertState}"),
+                defaultLabel = alertGizmoLabel,
+                defaultDesc = "AlertGizmoDesc".Translate(),
+                disabled = true,
+                disabledReason = "TempGaugeMissingResearch".Translate()
+            };
+        }
+
         foreach (var g in base.GetGizmos())
         {
             yield return g;
