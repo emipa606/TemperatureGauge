@@ -130,40 +130,37 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
         Scribe_Values.Look(ref alertState, "alertState", AlertState.Normal);
     }
 
-    public override void Draw()
+    protected override void DrawAt(Vector3 drawLoc, bool flip = false)
     {
-        base.Draw();
+        base.DrawAt(drawLoc, flip);
         var currentRotation = Rotation.AsInt;
 
         var room = (Position + Rotation.FacingCell).GetRoom(Map);
-        //Log.Message($"Temperature Guage: temp {room.Temperature.ToString()});
+        //Log.Message($Temperature Guage: temp {room.Temperature.ToString()});
 
         var temperature = room.Temperature;
         var r = default(GenDraw.FillableBarRequest);
-        r.center = DrawPos;
+        r.center = drawLoc;
 
         var offsetFromCenter = 0.4f;
-        if (currentRotation is 0 or 2)
+        switch (currentRotation)
         {
-            if (currentRotation == 0) // North
-            {
+            // North
+            case 0 or 2 when currentRotation == 0:
                 r.center.z += offsetFromCenter;
-            }
-            else // South
-            {
+                break;
+            // South
+            case 0 or 2:
                 r.center.z -= offsetFromCenter;
-            }
-        }
-        else
-        {
-            if (currentRotation == 1) // East
-            {
+                break;
+            // East
+            case 1:
                 r.center.x += offsetFromCenter;
-            }
-            else // West
-            {
+                break;
+            // West
+            default:
                 r.center.x -= offsetFromCenter;
-            }
+                break;
         }
 
         r.rotation = Rotation;
@@ -262,7 +259,7 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
                 icon = ContentFinder<Texture2D>.Get($"UI/Commands/Alert_{alertState}"),
                 defaultLabel = alertGizmoLabel,
                 defaultDesc = "AlertGizmoDesc".Translate(),
-                disabled = true,
+                Disabled = true,
                 disabledReason = "TempGaugeMissingResearch".Translate()
             };
         }

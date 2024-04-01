@@ -74,12 +74,12 @@ internal class Building_TemperatureSwitch : Building_Thermometer
         compFlickable = GetComp<CompFlickable>();
     }
 
-    public override void Draw()
+    protected override void DrawAt(Vector3 drawLoc, bool flip = false)
     {
-        base.Draw();
+        base.DrawAt(drawLoc, flip);
         var temperature = this.GetRoom(RegionType.Set_Passable).Temperature;
         var r = default(GenDraw.FillableBarRequest);
-        r.center = DrawPos + (Vector3.up * 0.05f);
+        r.center = drawLoc + (Vector3.up * 0.05f);
         r.size = new Vector2(0.7f, 0.1f);
         r.margin = 0.05f;
         r.fillPercent = compFlickable == null || compFlickable.SwitchIsOn

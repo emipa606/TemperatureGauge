@@ -82,8 +82,10 @@ public class Alert_TemperatureGauge : Alert
                     return building_TemperatureGauge;
                 }
 
-                if (building is not Building_TemperatureGaugeWall building_TemperatureGaugeWall ||
-                    !building_TemperatureGaugeWall.shouldSendAlert)
+                if (building is not Building_TemperatureGaugeWall
+                    {
+                        shouldSendAlert: true
+                    } building_TemperatureGaugeWall)
                 {
                     continue;
                 }

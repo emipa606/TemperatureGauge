@@ -15,9 +15,9 @@ public abstract class Building_Thermometer : Building
 
     public string tempGizmoLabel => onHighTemp ? "OnHighTemp".Translate() : "OnLowTemp".Translate();
 
-    public string targetTempString => CompTempControl.targetTemperature.ToStringTemperature("F0");
+    protected string targetTempString => CompTempControl.targetTemperature.ToStringTemperature("F0");
 
-    public bool tempOutOfRange => onHighTemp
+    protected bool tempOutOfRange => onHighTemp
         ? this.GetRoom(RegionType.Set_Passable).Temperature > CompTempControl.targetTemperature
         : this.GetRoom(RegionType.Set_Passable).Temperature < CompTempControl.targetTemperature;
 

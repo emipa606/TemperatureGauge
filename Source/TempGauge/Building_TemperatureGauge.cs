@@ -55,12 +55,12 @@ public class Building_TemperatureGauge : Building_Thermometer
         Scribe_Values.Look(ref alertState, "alertState", AlertState.Normal);
     }
 
-    public override void Draw()
+    protected override void DrawAt(Vector3 drawLoc, bool flip = false)
     {
-        base.Draw();
+        base.DrawAt(drawLoc, flip);
         var temperature = this.GetRoom(RegionType.Set_Passable).Temperature;
         var r = default(GenDraw.FillableBarRequest);
-        r.center = DrawPos + (Vector3.up * 0.05f);
+        r.center = drawLoc + (Vector3.up * 0.05f);
         r.size = new Vector2(0.55f, 0.2f);
         r.margin = 0.05f;
         r.fillPercent = Mathf.Clamp(Mathf.Abs(temperature), 1f, 50f) / 50f;
@@ -158,7 +158,7 @@ public class Building_TemperatureGauge : Building_Thermometer
                 icon = ContentFinder<Texture2D>.Get($"UI/Commands/Alert_{alertState}"),
                 defaultLabel = alertGizmoLabel,
                 defaultDesc = "AlertGizmoDesc".Translate(),
-                disabled = true,
+                Disabled = true,
                 disabledReason = "TempGaugeMissingResearch".Translate()
             };
         }
