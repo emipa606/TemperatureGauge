@@ -74,26 +74,26 @@ public class Alert_TemperatureGauge : Alert
 
             foreach (var building in map.listerBuildings.allBuildingsColonist)
             {
-                if (building is Building_TemperatureGauge { shouldSendAlert: true } building_TemperatureGauge)
+                if (building is Building_TemperatureGauge { ShouldSendAlert: true } buildingTemperatureGauge)
                 {
-                    state = building_TemperatureGauge.alertState;
-                    targetTemp = building_TemperatureGauge.CompTempControl.targetTemperature;
-                    onHighTemp = building_TemperatureGauge.onHighTemp;
-                    return building_TemperatureGauge;
+                    state = buildingTemperatureGauge.AlertState;
+                    targetTemp = buildingTemperatureGauge.CompTempControl.targetTemperature;
+                    onHighTemp = buildingTemperatureGauge.OnHighTemp;
+                    return buildingTemperatureGauge;
                 }
 
                 if (building is not Building_TemperatureGaugeWall
                     {
-                        shouldSendAlert: true
-                    } building_TemperatureGaugeWall)
+                        ShouldSendAlert: true
+                    } buildingTemperatureGaugeWall)
                 {
                     continue;
                 }
 
-                state = building_TemperatureGaugeWall.alertState;
-                targetTemp = building_TemperatureGaugeWall.CompTempControl.targetTemperature;
-                onHighTemp = building_TemperatureGaugeWall.onHighTemp;
-                return building_TemperatureGaugeWall;
+                state = buildingTemperatureGaugeWall.AlertState;
+                targetTemp = buildingTemperatureGaugeWall.CompTempControl.targetTemperature;
+                onHighTemp = buildingTemperatureGaugeWall.OnHighTemp;
+                return buildingTemperatureGaugeWall;
             }
         }
 

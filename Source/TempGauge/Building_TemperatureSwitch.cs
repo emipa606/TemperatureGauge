@@ -11,13 +11,13 @@ namespace TempGauge;
 [StaticConstructorOnStartup]
 internal class Building_TemperatureSwitch : Building_Thermometer
 {
-    private static readonly Material GaugeFillHotMat =
+    private static readonly Material gaugeFillHotMat =
         SolidColorMaterials.SimpleSolidColorMaterial(new Color(1f, 0.5f, 0.2f));
 
-    private static readonly Material GaugeFillColdMat =
+    private static readonly Material gaugeFillColdMat =
         SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.2f, 0.4f, 1f));
 
-    private static readonly Material GaugeUnfilledMat =
+    private static readonly Material gaugeUnfilledMat =
         SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.1f, 0.1f, 0.1f));
 
     private CompFlickable compFlickable;
@@ -60,7 +60,7 @@ internal class Building_TemperatureSwitch : Building_Thermometer
         }
     }
 
-    public override bool TransmitsPowerNow => tempOutOfRange && compFlickable.SwitchIsOn;
+    public override bool TransmitsPowerNow => TempOutOfRange && compFlickable.SwitchIsOn;
 
     public override void ExposeData()
     {
@@ -85,8 +85,8 @@ internal class Building_TemperatureSwitch : Building_Thermometer
         r.fillPercent = compFlickable == null || compFlickable.SwitchIsOn
             ? Mathf.Clamp(Mathf.Abs(temperature), 1f, 50f) / 50f
             : 0f;
-        r.unfilledMat = GaugeUnfilledMat;
-        r.filledMat = temperature > 0f ? GaugeFillHotMat : GaugeFillColdMat;
+        r.unfilledMat = gaugeUnfilledMat;
+        r.filledMat = temperature > 0f ? gaugeFillHotMat : gaugeFillColdMat;
 
         var rotation = Rotation;
         rotation.Rotate(RotationDirection.Clockwise);
@@ -136,9 +136,9 @@ internal class Building_TemperatureSwitch : Building_Thermometer
         }
 
         stringBuilder.AppendLine();
-        stringBuilder.Append(onHighTemp
-            ? "SwitchOnHighTemperatureDesc".Translate(targetTempString)
-            : "SwitchOnLowTemperatureDesc".Translate(targetTempString));
+        stringBuilder.Append(OnHighTemp
+            ? "SwitchOnHighTemperatureDesc".Translate(TargetTempString)
+            : "SwitchOnLowTemperatureDesc".Translate(TargetTempString));
 
         if (compFlickable is { SwitchIsOn: false })
         {
@@ -172,7 +172,7 @@ internal class Building_TemperatureSwitch : Building_Thermometer
             action = delegate
             {
                 SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                GaugeSettings_Clipboard.Copy(onHighTemp, CompTempControl.targetTemperature);
+                GaugeSettings_Clipboard.Copy(OnHighTemp, CompTempControl.targetTemperature);
             },
             hotKey = KeyBindingDefOf.Misc4
         };
@@ -184,7 +184,7 @@ internal class Building_TemperatureSwitch : Building_Thermometer
             action = delegate
             {
                 SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                GaugeSettings_Clipboard.PasteInto(out onHighTemp, out CompTempControl.targetTemperature);
+                GaugeSettings_Clipboard.PasteInto(out OnHighTemp, out CompTempControl.targetTemperature);
             },
             hotKey = KeyBindingDefOf.Misc5
         };

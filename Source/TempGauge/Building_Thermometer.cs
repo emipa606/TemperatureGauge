@@ -11,20 +11,20 @@ public abstract class Building_Thermometer : Building
 {
     public CompTempControl CompTempControl;
 
-    public bool onHighTemp = true;
+    public bool OnHighTemp = true;
 
-    public string tempGizmoLabel => onHighTemp ? "OnHighTemp".Translate() : "OnLowTemp".Translate();
+    public string TempGizmoLabel => OnHighTemp ? "OnHighTemp".Translate() : "OnLowTemp".Translate();
 
-    protected string targetTempString => CompTempControl.targetTemperature.ToStringTemperature("F0");
+    protected string TargetTempString => CompTempControl.targetTemperature.ToStringTemperature("F0");
 
-    protected bool tempOutOfRange => onHighTemp
+    protected bool TempOutOfRange => OnHighTemp
         ? this.GetRoom(RegionType.Set_Passable).Temperature > CompTempControl.targetTemperature
         : this.GetRoom(RegionType.Set_Passable).Temperature < CompTempControl.targetTemperature;
 
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_Values.Look(ref onHighTemp, "onHighTemp", true);
+        Scribe_Values.Look(ref OnHighTemp, "onHighTemp", true);
     }
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
@@ -40,13 +40,13 @@ public abstract class Building_Thermometer : Building
         {
             yield return new Command_Action
             {
-                icon = ContentFinder<Texture2D>.Get($"UI/Commands/{(onHighTemp ? "TempHigh" : "TempLow")}"),
-                defaultLabel = (onHighTemp ? "OnHighTemp" : "OnLowTemp").Translate(),
+                icon = ContentFinder<Texture2D>.Get($"UI/Commands/{(OnHighTemp ? "TempHigh" : "TempLow")}"),
+                defaultLabel = (OnHighTemp ? "OnHighTemp" : "OnLowTemp").Translate(),
                 defaultDesc = "TempGizmoDesc".Translate(),
                 action = delegate
                 {
                     SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                    onHighTemp = !onHighTemp;
+                    OnHighTemp = !OnHighTemp;
                 }
             };
         }

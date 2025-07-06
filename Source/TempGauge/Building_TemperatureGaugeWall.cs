@@ -11,16 +11,16 @@ namespace TempGauge;
 [StaticConstructorOnStartup]
 public class Building_TemperatureGaugeWall : Building_Thermometer
 {
-    private static readonly Material GaugeFillHotMat =
+    private static readonly Material gaugeFillHotMat =
         SolidColorMaterials.SimpleSolidColorMaterial(new Color(1f, 0.5f, 0.2f));
 
-    private static readonly Material GaugeFillColdMat =
+    private static readonly Material gaugeFillColdMat =
         SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.2f, 0.4f, 1f));
 
-    private static readonly Material GaugeUnfilledMat =
+    private static readonly Material gaugeUnfilledMat =
         SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.1f, 0.1f, 0.1f));
 
-    public AlertState alertState = AlertState.Normal;
+    public AlertState AlertState = AlertState.Normal;
 
     public override string Label
     {
@@ -48,19 +48,19 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
         }
     }
 
-    public bool shouldSendAlert
+    public bool ShouldSendAlert
     {
         get
         {
             var alertStatus = false;
             try
             {
-                if (alertState > AlertState.Off)
+                if (AlertState > AlertState.Off)
                 {
                     var temperature = getRoomCell().GetRoom(Map).Temperature;
                     var targetTemperature = CompTempControl.targetTemperature;
                     //if (Prefs.DevMode) Log.Message($"Temperature Guage: temp {temperature}, target {targetTemperature}");
-                    alertStatus = onHighTemp ? temperature > targetTemperature : temperature < targetTemperature;
+                    alertStatus = OnHighTemp ? temperature > targetTemperature : temperature < targetTemperature;
                     //if (Prefs.DevMode) Log.Message($"Temperature Guage: alertstatus {alertStatus}");
                 }
             }
@@ -76,12 +76,12 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
         }
     }
 
-    private string alertGizmoLabel
+    private string AlertGizmoLabel
     {
         get
         {
             string result;
-            switch (alertState)
+            switch (AlertState)
             {
                 case AlertState.Off:
                     result = "AlertOffLabel".Translate();
@@ -127,7 +127,7 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_Values.Look(ref alertState, "alertState", AlertState.Normal);
+        Scribe_Values.Look(ref AlertState, "alertState", AlertState.Normal);
     }
 
     protected override void DrawAt(Vector3 drawLoc, bool flip = false)
@@ -142,15 +142,15 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
         var r = default(GenDraw.FillableBarRequest);
         r.center = drawLoc;
 
-        var offsetFromCenter = 0.4f;
+        const float offsetFromCenter = 0.4f;
         switch (currentRotation)
         {
             // North
-            case 0 or 2 when currentRotation == 0:
+            case 0:
                 r.center.z += offsetFromCenter;
                 break;
             // South
-            case 0 or 2:
+            case 2:
                 r.center.z -= offsetFromCenter;
                 break;
             // East
@@ -167,8 +167,8 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
         r.size = new Vector2(0.45f, 0.1f);
         r.margin = 0.01f;
         r.fillPercent = Mathf.Clamp(Mathf.Abs(temperature), 1f, 50f) / 50f;
-        r.unfilledMat = GaugeUnfilledMat;
-        r.filledMat = temperature > 0f ? GaugeFillHotMat : GaugeFillColdMat;
+        r.unfilledMat = gaugeUnfilledMat;
+        r.filledMat = temperature > 0f ? gaugeFillHotMat : gaugeFillColdMat;
 
         GenDraw.DrawFillableBar(r);
     }
@@ -176,7 +176,7 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
     public override void TickRare()
     {
         base.TickRare();
-        if (shouldSendAlert)
+        if (ShouldSendAlert)
         {
             FleckMaker.ThrowMetaIcon(this.TrueCenter().ToIntVec3(), Map, FleckDefOf.IncapIcon);
         }
@@ -201,20 +201,20 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
 
         if (ResearchProjectDef.Named("Electricity").IsFinished)
         {
-            if (alertState == AlertState.Off)
+            if (AlertState == AlertState.Off)
             {
                 stringBuilder.Append("AlertOffDesc".Translate());
             }
             else
             {
-                stringBuilder.Append(onHighTemp
-                    ? "AlertOnHighTemperatureDesc".Translate(targetTempString)
-                    : "AlertOnLowTemperatureDesc".Translate(targetTempString));
+                stringBuilder.Append(OnHighTemp
+                    ? "AlertOnHighTemperatureDesc".Translate(TargetTempString)
+                    : "AlertOnLowTemperatureDesc".Translate(TargetTempString));
             }
         }
         else
         {
-            alertState = AlertState.Off;
+            AlertState = AlertState.Off;
         }
 
         if (string.IsNullOrEmpty(tempInfoAdd))
@@ -235,19 +235,19 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
         {
             yield return new Command_Action
             {
-                icon = ContentFinder<Texture2D>.Get($"UI/Commands/Alert_{alertState}"),
-                defaultLabel = alertGizmoLabel,
+                icon = ContentFinder<Texture2D>.Get($"UI/Commands/Alert_{AlertState}"),
+                defaultLabel = AlertGizmoLabel,
                 defaultDesc = "AlertGizmoDesc".Translate(),
                 action = delegate
                 {
                     SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                    if (alertState >= AlertState.Critical)
+                    if (AlertState >= AlertState.Critical)
                     {
-                        alertState = AlertState.Off;
+                        AlertState = AlertState.Off;
                     }
                     else
                     {
-                        alertState++;
+                        AlertState++;
                     }
                 }
             };
@@ -256,8 +256,8 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
         {
             yield return new Command_Action
             {
-                icon = ContentFinder<Texture2D>.Get($"UI/Commands/Alert_{alertState}"),
-                defaultLabel = alertGizmoLabel,
+                icon = ContentFinder<Texture2D>.Get($"UI/Commands/Alert_{AlertState}"),
+                defaultLabel = AlertGizmoLabel,
                 defaultDesc = "AlertGizmoDesc".Translate(),
                 Disabled = true,
                 disabledReason = "TempGaugeMissingResearch".Translate()
@@ -277,7 +277,7 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
             action = delegate
             {
                 SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                GaugeSettings_Clipboard.Copy(onHighTemp, CompTempControl.targetTemperature, alertState);
+                GaugeSettings_Clipboard.Copy(OnHighTemp, CompTempControl.targetTemperature, AlertState);
             },
             hotKey = KeyBindingDefOf.Misc4
         };
@@ -289,8 +289,8 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
             action = delegate
             {
                 SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                GaugeSettings_Clipboard.PasteInto(out onHighTemp, out CompTempControl.targetTemperature,
-                    out alertState);
+                GaugeSettings_Clipboard.PasteInto(out OnHighTemp, out CompTempControl.targetTemperature,
+                    out AlertState);
             },
             hotKey = KeyBindingDefOf.Misc5
         };

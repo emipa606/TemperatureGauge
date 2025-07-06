@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: thermometer -->
+  <TemperatureGauge.label>thermometer</TemperatureGauge.label>
+  <!-- EN: Displays the current ambient temperature and can be configured to provide temperature based alerts. Does not require power. -->
+  <TemperatureGauge.description>Displays the current ambient temperature and can be configured to provide temperature based alerts. Does not require power.</TemperatureGauge.description>
+  <!-- EN: wall-thermometer -->
+  <TemperatureGaugeWall.label>wall-thermometer</TemperatureGaugeWall.label>
+  <!-- EN: Displays the current ambient temperature and can be configured to provide temperature based alerts. Does not require power. -->
+  <TemperatureGaugeWall.description>Displays the current ambient temperature and can be configured to provide temperature based alerts. Does not require power.</TemperatureGaugeWall.description>
+  <!-- EN: temperature switch -->
+  <TemperatureSwitch.label>temperature switch</TemperatureSwitch.label>
+  <!-- EN: A configurable switch that transfers power based on the current temperature. -->
+  <TemperatureSwitch.description>A configurable switch that transfers power based on the current temperature.</TemperatureSwitch.description>
+</LanguageData>

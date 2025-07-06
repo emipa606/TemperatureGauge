@@ -9,17 +9,8 @@ public class TemperatureGaugeWall_PlaceWorker : PlaceWorker
         var c = loc;
 
         var support = c.GetEdifice(map);
-        if (support == null)
-        {
-            return "MessagePlacementOnSupport".Translate();
-        }
-
-        if (support.def?.graphicData == null)
-        {
-            return "MessagePlacementOnSupport".Translate();
-        }
-
-        if ((support.def.graphicData.linkFlags & (LinkFlags.Rock | LinkFlags.Wall)) == 0)
+        if (support?.def?.graphicData == null ||
+            (support.def.graphicData.linkFlags & (LinkFlags.Rock | LinkFlags.Wall)) == 0)
         {
             return "MessagePlacementOnSupport".Translate();
         }

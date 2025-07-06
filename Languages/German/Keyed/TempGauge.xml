@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <TempGaugeAlert>Temperatur ausserhalb des Bereichs</TempGaugeAlert>
   <TempGaugeAlertDesc>Eins oder mehrere Thermometer berichten von einer Temperatur, die den Alarmbereich Ã¼berschreiten!</TempGaugeAlertDesc>

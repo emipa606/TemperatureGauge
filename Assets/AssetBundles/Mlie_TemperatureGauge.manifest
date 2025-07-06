@@ -1,0 +1,31 @@
+ManifestFileVersion: 0
+CRC: 1645068406
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 03f20c57aea0ed6a94af7b94299e5ab0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 03f20c57aea0ed6a94af7b94299e5ab0
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/Mlie.TemperatureGauge/Textures/UI/Commands/TempHigh.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/Things/Building/TempGaugeWall_UI.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/UI/Commands/Alert_Off.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/Things/Building/TempGaugeWall_east.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/Things/Building/TempGaugeWall_south.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/UI/Commands/Alert_Critical.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/Things/Building/TempSwitch.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/Things/Building/TempGaugeWall_north.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/Things/Building/TempSwitch_Off.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/UI/Commands/Alert_Normal.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/UI/Commands/TempLow.png
+- Assets/Data/Mlie.TemperatureGauge/Textures/Things/Building/TempGauge.png
+Dependencies: []
