@@ -1,6 +1,6 @@
 # [Temperature Gauge (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2017464494)
 
-![Image](https://i.imgur.com/buuPQel.png)
+![Image](https://img.litet.net/logos/Info.png)
 
 Update of Aeryl mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=843504745
@@ -11,9 +11,9 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=843504745
 - Testing this with the Parallel Power-grid mod gave no errors so it should now be compatible
 - Russian translation added, thanks uncleshvya
 
-![Image](https://i.imgur.com/pufA0kM.png)
+![Image](https://img.litet.net/logos/Notice.png)
 	
-![Image](https://i.imgur.com/Z4GOv8H.png)
+![Image](https://img.litet.net/logos/OriginalDescription.png)
 
 Adds a simple buildable thermometer that displays the current ambient temperature and can be configured to provide temperature based alerts. You can set it to alert you when a room gets too hot or cold. If you have ever had food rot in a freezer or plants die in your greenhouse because you forgot to check the temperature, this mod is for you.
 
@@ -27,13 +27,13 @@ It should be fine to add this mod to an existing save.
 • Switches now update less frequently; this should provide a slight increase to performance.
 
 
-![Image](https://i.imgur.com/PwoNOj4.png)
+![Image](https://img.litet.net/logos/ReportingIssues.png)
 
 
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using [HugsLib](https://steamcommunity.com/workshop/filedetails/?id=818773962) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
+-  Always post your log using the [Log Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404)
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
@@ -41,4 +41,4 @@ It should be fine to add this mod to an existing save.
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/TemperatureGauge?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2017464494) | tags: temperature,  alert
+[![Image](https://img.shields.io/github/v/release/emipa606/TemperatureGauge?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2017464494) | tags: alert, temperature
