@@ -59,9 +59,7 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
                 {
                     var temperature = getRoomCell().GetRoom(Map).Temperature;
                     var targetTemperature = CompTempControl.targetTemperature;
-                    //if (Prefs.DevMode) Log.Message($"Temperature Guage: temp {temperature}, target {targetTemperature}");
                     alertStatus = OnHighTemp ? temperature > targetTemperature : temperature < targetTemperature;
-                    //if (Prefs.DevMode) Log.Message($"Temperature Guage: alertstatus {alertStatus}");
                 }
             }
             catch
@@ -136,7 +134,6 @@ public class Building_TemperatureGaugeWall : Building_Thermometer
         var currentRotation = Rotation.AsInt;
 
         var room = (Position + Rotation.FacingCell).GetRoom(Map);
-        //Log.Message($Temperature Guage: temp {room.Temperature.ToString()});
 
         var temperature = room.Temperature;
         var r = default(GenDraw.FillableBarRequest);

@@ -22,8 +22,6 @@ internal class Building_TemperatureSwitch : Building_Thermometer
 
     private CompFlickable compFlickable;
 
-    private Graphic offGraphic;
-
     private bool switchOnOld;
 
     public override Graphic Graphic
@@ -40,15 +38,15 @@ internal class Building_TemperatureSwitch : Building_Thermometer
                 }
                 else
                 {
-                    if (offGraphic == null)
+                    if (field == null)
                     {
                         var graphicData = def.graphicData;
-                        offGraphic = GraphicDatabase.Get(graphicData.graphicClass, $"{graphicData.texPath}_Off",
+                        field = GraphicDatabase.Get(graphicData.graphicClass, $"{graphicData.texPath}_Off",
                             graphicData.shaderType.Shader, graphicData.drawSize, graphicData.color,
                             graphicData.colorTwo);
                     }
 
-                    defaultGraphic = offGraphic;
+                    defaultGraphic = field;
                 }
             }
             catch (Exception)

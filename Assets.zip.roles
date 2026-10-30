@@ -1,0 +1,12 @@
+Textures/Things/Building/TempGauge.png.dds.split image:Default
+Textures/Things/Building/TempGaugeWall_UI.png.dds.split image:Default
+Textures/Things/Building/TempGaugeWall_east.png.dds.split image:Default
+Textures/Things/Building/TempGaugeWall_north.png.dds.split image:Default
+Textures/Things/Building/TempGaugeWall_south.png.dds.split image:Default
+Textures/Things/Building/TempSwitch.png.dds.split image:Default
+Textures/Things/Building/TempSwitch_Off.png.dds.split image:Default
+Textures/UI/Commands/Alert_Critical.png.dds.split image:Default
+Textures/UI/Commands/Alert_Normal.png.dds.split image:Default
+Textures/UI/Commands/Alert_Off.png.dds.split image:Default
+Textures/UI/Commands/TempHigh.png.dds.split image:Default
+Textures/UI/Commands/TempLow.png.dds.split image:Default

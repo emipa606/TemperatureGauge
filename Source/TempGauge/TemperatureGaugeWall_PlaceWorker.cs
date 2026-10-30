@@ -1,5 +1,7 @@
 ﻿using Verse;
 
+namespace TempGauge;
+
 public class TemperatureGaugeWall_PlaceWorker : PlaceWorker
 {
     public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map,
